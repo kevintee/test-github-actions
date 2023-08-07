@@ -24,8 +24,8 @@ jobs:
   auto-approve:
     runs-on: ubuntu-latest
     needs:
-      diff
-      config-diff
+      - diff
+      - config-diff
     steps:
       - env:
           OUTPUT: ${{ needs.diff.outputs.output }}
