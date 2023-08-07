@@ -10,8 +10,6 @@ jobs:
       - uses: technote-space/get-diff-action@v6
         with:
           PATTERNS: src/config.yaml
-      # If we filter out any non-config.yaml files, we do not
-      # approve the PR, otherwise we auto approve it.
       - id: running
         run: "echo "test=hello" >> "$GITHUB_OUTPUT"
         if: !env.GIT_DIFF_FILTERED
