@@ -20,6 +20,7 @@ jobs:
           OUTPUT: ${{ needs.diff.outputs.output }}
         run: echo "$OUTPUT"
       - uses: juliangruber/approve-pull-request-action@v2.0.0
+        if: ${{ needs.diff.outputs.output }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: 1
