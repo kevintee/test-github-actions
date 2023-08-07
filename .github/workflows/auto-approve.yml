@@ -30,9 +30,9 @@ jobs:
       - env:
           OUTPUT: ${{ needs.diff.outputs.output }}
           OUTPUT2: ${{ needs.config-diff.outputs.output }}
-        run: echo "$OUTPUT", "$OUTPUT2", ${{ needs.diff.outputs.output }} == ${{ needs.config-diff.outputs.output }}
+        run: echo "$OUTPUT", "$OUTPUT2", ${{ needs.diff.outputs.output == needs.config-diff.outputs.output }}
       - uses: juliangruber/approve-pull-request-action@v2.0.0
-        if: ${{ needs.diff.outputs.output }} == ${{ needs.config-diff.outputs.output }}
+        if: ${{ needs.diff.outputs.output == needs.config-diff.outputs.output }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ github.event.number }}
