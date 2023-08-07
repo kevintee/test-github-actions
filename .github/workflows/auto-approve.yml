@@ -1,8 +1,10 @@
 name: Auto approve model hash updates
 on: pull_request
 jobs:
-  auto-approve:
+  diff:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.running.outputs.test }}
     steps:
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v6
@@ -10,8 +12,14 @@ jobs:
           PATTERNS: src/config.yaml
       # If we filter out any non-config.yaml files, we do not
       # approve the PR, otherwise we auto approve it.
+      - id: running
+        run: "echo "test=hello" >> "$GITHUB_OUTPUT"
+        if: !env.GIT_DIFF_FILTERED
+  auto-approve:
+    runs-on: ubuntu-latest
+    needs: diff
+    steps:
       - uses: juliangruber/approve-pull-request-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: 1
-        if: !env.GIT_DIFF_FILTERED
