@@ -12,7 +12,7 @@ jobs:
           PATTERNS: src/config.yaml
       - id: running
         run: echo "env.GIT_DIFF"
-        run: echo "test=env.GIT_DIFF" >> "$GITHUB_OUTPUT"
+        # run: echo "test=env.GIT_DIFF" >> "$GITHUB_OUTPUT"
   auto-approve:
     runs-on: ubuntu-latest
     needs: diff
