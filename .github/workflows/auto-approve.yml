@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v6
-        with:
-          PATTERNS: src/config.yaml
+        #with:
+        #  PATTERNS: src/config.yaml
       - id: running
         run: echo "test=${{ env.GIT_DIFF }}" >> "$GITHUB_OUTPUT"
   auto-approve:
