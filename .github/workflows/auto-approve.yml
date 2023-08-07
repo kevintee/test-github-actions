@@ -11,7 +11,7 @@ jobs:
         with:
           PATTERNS: src/config.yaml
       - id: running
-        run: echo "test=env.GIT_DIFF_FILTERED" >> "$GITHUB_OUTPUT"
+        run: echo "test=env.GIT_DIFF" >> "$GITHUB_OUTPUT"
   auto-approve:
     runs-on: ubuntu-latest
     needs: diff
