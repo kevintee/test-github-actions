@@ -11,7 +11,7 @@ jobs:
         with:
           PATTERNS: src/config.yaml
       - id: running
-        run: "echo "test=hello" >> "$GITHUB_OUTPUT"
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
         if: !env.GIT_DIFF_FILTERED
   auto-approve:
     runs-on: ubuntu-latest
