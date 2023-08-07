@@ -18,10 +18,10 @@ jobs:
     steps:
       - env:
           OUTPUT: ${{ needs.diff.outputs.output }}
-        run: echo OUTPUT 
+        run: echo "$OUTPUT"
       - uses: juliangruber/approve-pull-request-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: 1
       - id: test
-        run: echo OUTPUT 
+        run: echo "$OUTPUT"
